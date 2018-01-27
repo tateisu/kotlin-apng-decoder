@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ApngDecoder.iml" filepath="$PROJECT_DIR$/ApngDecoder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apng/apng.iml" filepath="$PROJECT_DIR$/apng/apng.iml" />
+      <module fileurl="file://$PROJECT_DIR$/apng_android/apng_android.iml" filepath="$PROJECT_DIR$/apng_android/apng_android.iml" />
+      <module fileurl="file://C:\mastodon-related\ApngDecoder\example\app.iml" filepath="C:\mastodon-related\ApngDecoder\example\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
+    </modules>
+  </component>
+</project>

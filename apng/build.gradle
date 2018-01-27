@@ -1,0 +1,72 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
+
+dependencies {
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+// Your library will be referred as your_maven_group_name:library_name:version
+archivesBaseName = 'apng'
+group = 'jp.juggler'
+version = '1.0.0' // library version
+
+def utf8 = 'UTF-8'
+[compileJava, compileTestJava]*.options*.encoding = utf8
+
+task sourcesJar(type: Jar, dependsOn:classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn:javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+javadoc {
+    options.locale = 'en_US'
+}
+
+artifacts {
+    archives jar
+    archives sourcesJar
+    archives javadocJar
+}
+
+publishing {
+    publications {
+        mavenPublication(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+bintray {
+    user = project.hasProperty('bintray_user') ? bintray_user : ''
+    key = project.hasProperty('bintray_apikey') ? bintray_apikey : ''
+
+    pkg {
+        repo = 'maven'
+        name = 'kotlin-apng-decoder'
+        licenses = ['Apache-2.0']
+        websiteUrl = 'https://github.com/your_github_name/your_library'
+        issueTrackerUrl = 'https://github.com/your_github_name/your_library/issues'
+        vcsUrl = 'https://github.com/your_github_name/your_library.git'
+        version {
+            name = project.version
+            released = new Date()
+            gpg {
+                sign = true
+                passphrase = project.hasProperty('bintray_gpg_password') ? bintray_gpg_password : ''
+            }
+        }
+    }
+    publications = ['mavenPublication']
+    configurations = ['archives']
+}
