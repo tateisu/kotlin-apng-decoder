@@ -1,4 +1,4 @@
-package jp.juggler.apngdecoder
+package jp.juggler.apngsample
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4

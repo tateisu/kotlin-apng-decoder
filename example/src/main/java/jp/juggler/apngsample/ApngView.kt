@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.os.SystemClock
 import android.util.AttributeSet
 import android.view.View
+import jp.juggler.apng.ApngFrames
 
 class ApngView : View{
 	
@@ -113,7 +114,7 @@ class ApngView : View{
 				canvas.drawBitmap(bitmap, drawMatrix, paint)
 				
 				if( delay != Long.MAX_VALUE){
-					postInvalidateDelayed(Math.max(1,delay))
+					postInvalidateDelayed(Math.max(1L,delay))
 				}
 			}
 		}

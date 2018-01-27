@@ -1,1 +1,1 @@
-include ':example', ':apng', ':apng_android'
+include ':example', ':apng_android', ':apng'

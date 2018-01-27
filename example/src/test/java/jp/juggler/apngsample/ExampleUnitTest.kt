@@ -1,4 +1,4 @@
-package jp.juggler.apngdecoder
+package jp.juggler.apngsample
 
 import org.junit.Test
 

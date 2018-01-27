@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import jp.juggler.apng.ApngFrames
 import kotlin.concurrent.thread
 
 class ActMain : AppCompatActivity() {
@@ -111,7 +112,7 @@ class ActMain : AppCompatActivity() {
 					try {
 						resources.openRawResource(resId).use { inStream->
 							val apngFrames = ApngFrames.parseApng(inStream, 128)
-							handler.post {
+							handler.post( {
 								if(isDestroyed) return@post
 								if( lastId != resId) {
 									Log.d(TAG,"loading cancelled: resId=$resId,lastId=$lastId")
@@ -119,7 +120,7 @@ class ActMain : AppCompatActivity() {
 									Log.d(TAG,"loading complete: resId=$resId")
 									apngView.apngFrames = apngFrames
 								}
-							}
+							})
 						}
 					}catch(ex:Throwable){
 						ex.printStackTrace()
